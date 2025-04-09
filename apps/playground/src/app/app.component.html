@@ -1,0 +1,2 @@
+<input placeholder="Test" [formControl]="control" [readonly]="control.readonly$ | async" />
+<p>{{ control.error$ | async }}</p>

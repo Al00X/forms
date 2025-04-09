@@ -1,0 +1,5 @@
+# @al00x/forms
+
+`npm i @al00x/forms`
+
+

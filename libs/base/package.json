@@ -1,0 +1,35 @@
+{
+  "name": "@al00x/forms",
+  "version": "1.0.0",
+  "description": "Angular Forms, the way it should be!",
+  "author": {
+    "name": "Al00X"
+  },
+  "keywords": [
+    "angular",
+    "forms",
+    "extend",
+    "essential",
+    "formControl",
+    "formGroup",
+    "validators"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/al00x/forms"
+  },
+  "peerDependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/compiler": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "rxjs": "~7.8.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
