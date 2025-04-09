@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/al00x/forms"
+    "url": "https://github.com/Al00X/forms"
   },
   "peerDependencies": {
     "@angular/common": "^19.0.0",
