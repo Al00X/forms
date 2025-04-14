@@ -15,6 +15,8 @@ export interface FormGroupExtended<TValue extends { [K in keyof TValue]: Abstrac
   // data is being used as extra information that is carried by the formControl
   data: DATA | undefined;
 
+  markAllAsDirty: () => void;
+
   setReadonly: (value: boolean, ...keys: (keyof TValue)[]) => FormGroupExtended<TValue, DATA>;
   setDisabled: (value: boolean, ...keys: (keyof TValue)[]) => FormGroupExtended<TValue, DATA>;
   // data is being used as extra information that is carried by the formControl
@@ -56,6 +58,13 @@ export function formGroup<T extends { [K in keyof T]: AbstractControl<any, any> 
     });
     return group;
   };
+
+  group.markAllAsDirty = () => {
+    forEachControl((key, control) => {
+      control.markAsDirty();
+      control.markAsTouched();
+    })
+  }
 
   group.setData = (value) => {
     group.data = value;
