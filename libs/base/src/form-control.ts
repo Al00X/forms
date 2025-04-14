@@ -17,7 +17,9 @@ export interface FormControlExtended<TValue = any, DATA = any> extends FormContr
   valid$: Observable<boolean>;
   value$: Observable<TValue | undefined>;
   error$: Observable<string | undefined>;
+
   hasValue$: Observable<boolean>;
+  empty$: Observable<boolean>;
 
   selectedItems$: Observable<any[] | undefined>;
   selectedItems: any[] | undefined;
@@ -85,7 +87,14 @@ export function formControl<T, DATA = any>(
   control.invalid$ = control.status$.pipe(map((t) => t === 'INVALID'));
   control.valid$ = control.status$.pipe(map((t) => t === 'VALID'));
   control.value$ = valueSubject.pipe();
-  control.hasValue$ = valueSubject.pipe(map((v) => v !== undefined && v !== null && v !== ''));
+
+  control.hasValue$ = valueSubject.pipe(map((v) => {
+    if (value === null || value === undefined) return false;
+    if (typeof value === 'string' && value.length === 0) return false;
+    if (value instanceof Array && value.length === 0) return false;
+    return true;
+  }));
+  control.empty$ = control.hasValue$.pipe(map(v => !v))
 
   control.selectedItems$ = selectedItemsTrigger.asObservable();
   control.selectedItems = selectedItemsTrigger.value;
