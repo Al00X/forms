@@ -217,6 +217,7 @@ export function formControl<T, DATA = any>(
     valueSubject.next(value && typeof value === 'object' && 'value' in value ? value.value : value);
     control.setData(undefined);
     control.setSelectedItems(undefined);
+    control.setDisplayText(undefined);
     dirtyTrigger.next(control.dirty);
     touchedTrigger.next(control.touched);
   };
